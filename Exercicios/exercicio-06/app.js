@@ -23,7 +23,15 @@
     "Nem pera nem abacaxi existem no array "fruits".".
 */
 
-const fruits = ['morango', 'banana', 'mamão']
+const fruits = ['morango', 'banana', 'mamão', 'pera', 'abacaxi']
+
+if(fruits.includes("abacaxi")){
+  console.log('A string "abacaxi" existe no array fruits.')
+}else if(fruits.includes("pera")){
+  console.log('A string "pera" existe no array fruits.')
+}else{
+  console.log('Nem pera nem abacaxi existem no array "fruits".')
+}
 
 /*
   02
@@ -37,6 +45,21 @@ const fruits = ['morango', 'banana', 'mamão']
   Obs.: tanto a expressão do lado esquerdo quanto a do lado direito do operador  
   lógico precisam ter a constante especificada. Exemplo: hour > x && hour < y.
 */
+
+const atualHour = 25
+const isMorning = (atualHour >= 6 && atualHour < 12)
+const isAfternoon = (atualHour >= 12 && atualHour < 18)
+const isNigth = (atualHour >= 18 && atualHour < 24)
+
+if (isMorning){
+  console.log("Bom dia!")
+}else if (isAfternoon){
+  console.log("Boa tarde!")
+}else if (isNigth){
+  console.log("Boa Noite!")
+}else{
+  console.log("Horario invalido!")
+}
 
 /*
   03
@@ -52,6 +75,15 @@ const fruits = ['morango', 'banana', 'mamão']
     também está funcionando.
 */
 
+const myAge = 41
+const itsFree = (myAge <= 7 || myAge >= 65)
+
+if(itsFree){
+  console.log('Para você, a entrada é grátis!')
+}else{
+  console.log('A entrada é R$ 30,00.')
+}
+
 /*
   04
 
@@ -62,6 +94,10 @@ const fruits = ['morango', 'banana', 'mamão']
 */
 
 const numbers = [7, 92, 34, 46, 90, 25, 11, 3, 89, 76, 99]
+const newNumbers = numbers.filter( item => item >= 11 && item <= 90)
+
+console.log(newNumbers)
+
 
 /*
   05
@@ -77,6 +113,26 @@ const numbers = [7, 92, 34, 46, 90, 25, 11, 3, 89, 76, 99]
 */
 
 const crazyArray = [true, 869, 'oi', 71, false, 83, '35', true, 397, 'js', false]
+let isABoolean = 0
+let isANumber = 0 
+let isAString = 0
+
+for(let i = 0 ; i < crazyArray.length ; i++){
+  let itemType = (typeof crazyArray[i])
+
+  if(itemType === 'boolean'){
+    isABoolean ++
+  }
+  if(itemType === 'number'){
+    isANumber ++
+  }
+  if(itemType === 'string'){
+    isAString ++
+  }
+  
+}
+
+console.log(`O crazyArray tem ${isABoolean} booleans, ${isANumber} números e ${isAString} strings.`)
 
 /*
   06
@@ -96,3 +152,42 @@ const crazyArray = [true, 869, 'oi', 71, false, 83, '35', true, 397, 'js', false
 */
 
 const randomNumbers = [73, 4, 67, 10, 31, 58]
+let oddNumbers = []
+let evenNumbers = []
+let oddSentence = ''
+let evenSentence = ''
+
+for(let i=0 ; i < randomNumbers.length ; i++){
+  const isEven = (randomNumbers[i] % 2 == 0)
+  const increaseEven = i => (evenNumbers.push(randomNumbers[i]))
+  const increaseOdd = i => (oddNumbers.push(randomNumbers[i]))
+  if (isEven){
+    increaseEven(i)
+  }else{
+    increaseOdd(i)
+  }
+}
+
+oddNumbers.forEach((item, index) => {
+  if(index === oddNumbers.length -1){
+    oddSentence += ` e ${item}`
+  }else if(index === oddNumbers.length -2){
+    oddSentence += `${item}`
+  }else{
+    oddSentence += `${item}, `
+  }
+})
+
+evenNumbers.forEach((item, index) => {
+  const isLastItem = (index === evenNumbers.length -1)
+  const isPenultimateItem = (index === evenNumbers.length -2)
+  if(isLastItem){
+    evenSentence += ` e ${item}`
+  }else if(isPenultimateItem){
+    evenSentence += `${item}`
+  }else{
+    evenSentence += `${item}, `
+  }
+})
+  
+console.log(`Numeros ímpares: ${oddSentence}. Números pares: ${evenSentence}.`)
