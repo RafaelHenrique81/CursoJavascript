@@ -6,7 +6,12 @@
   - Previna que esses parâmetros recebam undefined;
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
-
+function multiplyTwoNumbers (numA, numB){
+  if (numA !== null && numB!==null){
+    return numA * numB
+  }
+}
+console.log(multiplyTwoNumbers(2, 9))
 /*
   02
 
@@ -14,6 +19,15 @@
     **function expression** que retorne o resultado da **divisão** entre esses  
     2 números.
 */
+
+
+const divisionNumbers = function(numA = 1, numB = 1 ){
+  if (numA !== null && numB!==null){
+    return numA / numB
+  }
+} 
+
+console.log(divisionNumbers(9,3))
 
 /*
   03
@@ -28,6 +42,17 @@
   "Esta é a Xª vez que essa string é exibida."
 */
 
+function printParameter(parameter){
+  if (parameter !== undefined){
+    console.log(parameter)
+  }
+}
+printParameter('Xablau!')
+
+// for (let i = 1 ; i < 8 ; i++){
+//   console.log(`Esta é a ${i}ª vez que essa string é exibida.`)
+// }
+
 /*
   04
 
@@ -40,6 +65,17 @@
 */
 
 const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
+const toUppercase = function(array = []){
+  let newArray = []
+  for (let i = 0 ; i < array.length ; i++){
+    newArray.push(array[i].toUpperCase()) 
+  }
+  return newArray
+}
+
+console.log(toUppercase(millennialWords))
+
+
 
 /*
   05
@@ -53,6 +89,23 @@ const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influenc
 */
 
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
+let counter = 0
+let positiveNumbers = 0
+let negativeNumbers = 0
+function isAPositiveNumber (number) {
+  counter ++
+  if(number < 0){
+    positiveNumbers ++
+  }else{
+    negativeNumbers ++
+  }
+}
+randomNumbers.forEach(number => {
+  isAPositiveNumber(number)
+})
+
+
+console.log(`O array "randomNumbers" possui ${counter} números, sendo ${positiveNumbers} positivos e ${negativeNumbers} negativos.`)
 
 /*
   06
@@ -64,7 +117,19 @@ const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
     função.
 */
 
-// getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
+const getOddNumbers = function (nunbers = []){
+ let newArray = []
+
+ nunbers.forEach(number => {
+  if(number % 2 === 1){
+    newArray.push(number)
+  }
+ })
+ 
+ return newArray
+}
+
+console.log(getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42]))
 
 /*
   07
@@ -102,3 +167,10 @@ const functions = [
   function () { return 'Índias' },
   function () { return 'Ocidentais.' }
 ]
+
+let sentence = ''
+for (let i = 0; i < functions.length; i++){
+  sentence += functions[i]() + ' '
+}
+
+console.log(sentence)
