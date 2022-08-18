@@ -12,8 +12,10 @@ const getCatInfo = () => {
   const name = 'Marcos'
   let age = 3
   const color = 'Cinza'
+  return {name, age, color}
 }
-
+getCatInfo()
+console.log(`${getCatInfo().name} é um gato ${getCatInfo().color} de ${getCatInfo().age} anos.`)
 /*
   02
 
@@ -29,7 +31,9 @@ const external = () => {
     const extraInternal = () => {
       console.log(movie.toUpperCase())
     }
+    extraInternal(movie)
   }
+  internal(movie)
 }
 
 external()
@@ -44,6 +48,7 @@ external()
 */
 
 let randomNumbers = [3, 2, 1]
+console.log(randomNumbers.reverse())
 
 /*
   04
@@ -58,7 +63,8 @@ let crazyArray = [
   function getMessage () { return 'hi' },
   [ 5, 96, 53  ]
 ]
-
+crazyArray.shift()
+console.log(crazyArray)
 /*
   05
 
@@ -76,38 +82,43 @@ const dogs = [
   { name: 'Xica', age: 6, gender: 'Female', breed: 'Chihuahua' }
 ]
 
+ const dogName = dogs.find(item => item.name === 'Zequinha') 
+ console.log(dogName)
+
 /*
   06
 
   - Cole o markup HTML abaixo em seu index.html;
+  
+  <section>
+  <article>
+  <h1 class="main-title">Curiosidades sobre o filme Jurassic Park</h1>
+  
+  <ul>
+  <li>
+  <h2 class="secondary-title">Direto das páginas do livro</h2>
+  <p>No livro Parque dos Dinossauros, de Michael Crichton, o personagem John Hammond anuncia orgulhoso que o guia turístico do parque é o ator Richard Kiley, conhecido nos Estados Unidos. No filme, o diretor Steven Spielberg convidou o próprio Kiley para interpretar a si mesmo nesta cena.</p>
+  </li>
+  
+  <li>
+  <h2 class="secondary-title">Passou adiante</h2>
+  <p>O ator William Hurt chegou a ser convidado para interpretar o Dr. Alan Grant, mas recusou o papel sem nem mesmo ler o roteiro original do filme.</p>
+  </li>
+  
+  <li>
+  <h2 class="secondary-title">Sistemas operacionais do parque</h2>
+  <p>Nos diversos softwares que aparecem em Jurassic Park foram utilizadas várias linguagens. Pode-se notar que um dos programas utilizados no parque foi escrito em Pascal, em um dos monitores percebe-se a utilização do sistema UNIX e a interface gráfica utilizada é a 3D File System Navigator, da Sillicon Graphics.</p>
+  </li>
+  </ul>
+  </article>
+  </section>
   - Utilize o query selector para obter a referência do título principal da  
     página, através da classe dele;
   - Exiba a referência do título principal no console.
+  */
 
-  <section>
-    <article>
-      <h1 class="main-title">Curiosidades sobre o filme Jurassic Park</h1>
-
-      <ul>
-        <li>
-          <h2 class="secondary-title">Direto das páginas do livro</h2>
-          <p>No livro Parque dos Dinossauros, de Michael Crichton, o personagem John Hammond anuncia orgulhoso que o guia turístico do parque é o ator Richard Kiley, conhecido nos Estados Unidos. No filme, o diretor Steven Spielberg convidou o próprio Kiley para interpretar a si mesmo nesta cena.</p>
-        </li>
-
-        <li>
-          <h2 class="secondary-title">Passou adiante</h2>
-          <p>O ator William Hurt chegou a ser convidado para interpretar o Dr. Alan Grant, mas recusou o papel sem nem mesmo ler o roteiro original do filme.</p>
-        </li>
-
-        <li>
-          <h2 class="secondary-title">Sistemas operacionais do parque</h2>
-          <p>Nos diversos softwares que aparecem em Jurassic Park foram utilizadas várias linguagens. Pode-se notar que um dos programas utilizados no parque foi escrito em Pascal, em um dos monitores percebe-se a utilização do sistema UNIX e a interface gráfica utilizada é a 3D File System Navigator, da Sillicon Graphics.</p>
-        </li>
-      </ul>
-    </article>
-  </section>
-*/
-
+const title = document.querySelector('.main-title')
+console.log(title.innerText)
 /*
   07
 
@@ -115,3 +126,6 @@ const dogs = [
     página, através da classe deles;
   - Exiba esse NodeList no console.
 */
+const secondaryTitles = document.querySelectorAll('.secondary-title')
+
+console.log(secondaryTitles)
