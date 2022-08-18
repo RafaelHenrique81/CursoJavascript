@@ -92,4 +92,3 @@ button.addEventListener('click', () => {
 h1.addEventListener('click' , event => {
   event.target.parentElement.remove()
 })
-
