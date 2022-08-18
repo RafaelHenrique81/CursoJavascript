@@ -3,14 +3,20 @@
 
   - No envio do form, faça com que a página não seja recarregada.
 */
+const form = document.querySelector('form')
 
+form.addEventListener('submit', (event)=>{
+  event.preventDefault()
+  const regex = /[a-zA-Z0-9]{7,11}/
+  regex.test(event.target.input.value) ? console.log('O valor inserido no input é válido =)') : console.log('Valor inválido =(')
+})
 /*
   02
 
   - No envio do form obtenha, através do objeto event, o texto inserido no  
     input e exiba-o no console.
 */
-
+//acima
 /*
   03
 
@@ -18,6 +24,10 @@
     index.html;
   - Exiba no console o boolean no qual este teste resulta.
 */
+const paragraph = document.querySelector('p')
+const regex = /documentation/
+const result = regex.test(paragraph.textContent)
+console.log(result) 
 
 /*
   04
@@ -28,15 +38,17 @@
 */
 
 const B99message = 'E o Terry Crews faz tudo, inclusive tocar a abertura de B99 na flauta'
+const B99Regex = /[A-Z9]{3}/
 
+console.log(B99Regex.test(B99message))
 /*
   05
 
   - Modifique (manualmente) o valor que a const word armazena para que o  
     resultado do teste entre a regex e a string exibido no console seja true.
 */
-
-const word = 'O que a NASA fotografou no dia do seu aniversário?'
+// const word = 'O que a NASA fotografou no dia do seu aniversário?'
+const word = 'NASA'
 const NASARegex = /^[A-Z]{4}$/
 const NASAResult = NASARegex.test(word)
 
@@ -55,6 +67,8 @@ console.log(NASAResult)
     - "jozeti" não é um valor válido, pois contém 6 caracteres.
 */
 
+//acima (/.{7})
+
 /*
   07
 
@@ -66,3 +80,5 @@ console.log(NASAResult)
     - "0xY79aYx54e" é um valor válido, pois contém 11 letras e números;
     - "eich_1961" não é um valor válido, pois contém um caractere especial.
 */
+
+//acima
