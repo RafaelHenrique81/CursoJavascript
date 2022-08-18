@@ -17,6 +17,9 @@ function convertToString (value) {
   return String(value)
 }
 
+convertToStringArrow = value => String(value)
+
+console.log(typeof (convertToString(123)))
 /*
   02
 
@@ -24,6 +27,11 @@ function convertToString (value) {
     recebida por parâmetro possui.
 */
 
+function howManyChars (string) {
+  return string.length
+} 
+
+console.log(howManyChars('inconstitucinalissimamente'))
 /*
   03
 
@@ -33,6 +41,11 @@ function convertToString (value) {
 
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
+function stringToLower (item) {
+  return item.toLowerCase()
+} 
+
+console.log(stringToLower('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO'))
 
 /*
   04
@@ -40,6 +53,11 @@ function convertToString (value) {
   - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
+function findChar (string, index) {
+  return string.charAt(index)
+} 
+
+console.log(findChar('Xablau', 3))
 
 /*
   05
@@ -47,6 +65,13 @@ function convertToString (value) {
   - Crie uma função que, ao ser invocada, retorna um boolean indicando se o item  
     passado por argumento existe no array (também passado por argumento).
 */
+function hasItem (item, array) {
+  if (array.includes(item)){
+    return true
+  }
+  return false
+}
+console.log(hasItem(3, [0,1,2,3]))
 
 /*
   06
@@ -55,6 +80,11 @@ function convertToString (value) {
     argumentos em sua invocação;
 */
 
+function arrayJoiner(item1, item2){
+  return item1.concat(item2)
+}
+
+console.log(arrayJoiner([1,2,3], [4,5,6]))
 /*
   07
 
@@ -62,6 +92,12 @@ function convertToString (value) {
     mas com o último item removido.
 */
 
+function lessLast (array) {
+    array.pop()
+    return array
+}
+
+console.log(lessLast([1,2,3,4]))
 /*
   08
 
@@ -69,6 +105,14 @@ function convertToString (value) {
     invocação é null.
 */
 
+function isNull(item) {
+  if(item === null){
+    return true
+  }
+  return false
+}
+console.log(isNull(null))
+console.log(isNull('null'))
 /*
   09
 
@@ -80,6 +124,14 @@ function convertToString (value) {
     foi exibido.
 */
 
+function invoqueCallback (callback) {
+  return callback()
+}
+function showName(name) {
+  console.log('Rafael')
+}
+
+invoqueCallback(showName)
 /*
   10
 
@@ -90,6 +142,13 @@ function convertToString (value) {
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
+function invoqueCallbackWithParameter (callback, parameter) {
+  return callback(parameter)
+}function returnTriple(number){
+  return number * 3
+}
+console.log(invoqueCallbackWithParameter(returnTriple, 11))
+
 
 /*
   11
@@ -102,6 +161,10 @@ function convertToString (value) {
 
 const numbers = [1, 2, 3]
 
+numbers.forEach((value, index, array) => {
+  console.log(`O ${index+1}º item do array ${array} é ${value}.`)
+})
+
 /*
   12
 
@@ -113,9 +176,13 @@ const numbers = [1, 2, 3]
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+// for (let i = 0; i < letters.length; i++) {
+//   lettersCopy.push(letters[i])
+// }
+
+letters.forEach(leter => lettersCopy.push(leter))
+
+console.log(lettersCopy)
 
 /*
   13
@@ -145,7 +212,9 @@ const review = [
 ]
 
 let paragraphs = ''
-
+review.forEach(review =>{
+  paragraphs += `<p>${review}</p>`
+})
 section.innerHTML = paragraphs
 
 /*
@@ -168,3 +237,32 @@ section.innerHTML = paragraphs
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+function likes(names) {
+  if (names.length === 0){
+    return `Ninguém curtiu isso`
+  }else if(names.length === 1){
+    return `${names.join()} curtiu isso`
+
+  }else if(names.length === 2){
+    return `${names.join(' e ')} curtiram isso`
+
+  }else if(names.length === 3){
+    let totals = ''
+    for (let i = 0; i < 3 ; i++){
+      if(i === 2){
+        totals += `e ${names[i]}`
+      }else if(i=== 1) {
+        totals += `${names[i]} `
+      }else{
+        totals += `${names[i]}, `
+      }
+    }
+    return `${totals} curtiram isso`
+
+  }else if(names.length <= 4){
+    const twoFirsts = `${names[0]}, ${names[1]}`
+    return `${twoFirsts} e mais ${names.length - 2} pessoas curtiram isso`
+  }
+}
+
+console.log(likes(['Rafael', 'Liara', 'Beatriz', 'Arthur']))
