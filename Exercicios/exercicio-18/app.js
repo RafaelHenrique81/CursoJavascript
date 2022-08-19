@@ -20,6 +20,50 @@
   
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
+const user = document.querySelector('#username')
+const form = document.querySelector('form')
+const regex = /^[a-zA-Z]{6,12}$/
+const tempPInput = document.createElement('p')
+const tempPSubmit = document.createElement('p')
+tempPSubmit.setAttribute('data-feedback','submit')
+
+const isValid = () => {
+  
+  tempPInput.className = 'username-success-feedback'
+  tempPInput.textContent = 'Username válido =)'
+}
+const isNotValid = () => {
+  tempPInput.className = 'username-help-feedback'
+  tempPInput.textContent = 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas'
+}
+
+const submitValid = () => {
+  tempPSubmit.className = 'submit-success-feedback'
+  tempPSubmit.textContent = 'Dados enviados =)'
+}
+
+const submitNotValid = () => {
+  tempPSubmit.className = 'submit-help-feedback'
+  tempPSubmit.textContent = 'Por favor, insira um username válido'
+}
+
+
+user.addEventListener('input', event => {
+  const tempPSubmitExists = document.querySelector('[data-feedback="submit"]')
+  if (tempPSubmitExists){
+    tempPSubmit.remove()
+  }
+  regex.test(event.target.value) ? isValid() : isNotValid() 
+  user.insertAdjacentElement("afterend",tempPInput)
+})
+
+form.addEventListener('submit', event =>{
+  event.preventDefault()
+  
+  regex.test(user.value) ? submitValid() : submitNotValid()   
+  form.insertAdjacentElement("afterend",tempPSubmit)
+})
+
 
 /*
   02
@@ -50,3 +94,14 @@
         6;
     2) Pesquisar no MDN.
 */
+const some = (array, func) => {
+  for (let i = 0 ; i < array.length ; i++){
+    if(func(array[i])){
+      return true
+    }
+  }
+  return false
+}
+
+console.log(some([1, 2, 3], item => item > 2))
+console.log(some([1, 3, 5], item => item === 0))
