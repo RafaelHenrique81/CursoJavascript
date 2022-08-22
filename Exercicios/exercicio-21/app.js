@@ -6,7 +6,8 @@
 */
 
 const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
-
+const newArrayOddNumbers = randomNumbers.filter(number => number % 2 === 1)
+console.log(newArrayOddNumbers)
 /*
   02
 
@@ -14,7 +15,14 @@ const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
 */
 
 const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
+const quantityOfNubersGreaterThen501 = crazyNumbers.reduce((acc, number) => {
+  if (number < 501){
+    acc ++ 
+  }  
+return acc 
+}, 0)
 
+console.log(quantityOfNubersGreaterThen501)
 /*
   03
 
@@ -23,7 +31,8 @@ const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
 */
 
 const numbers = [5, 7, 3]
-
+const squareNumbers = numbers.map(number => number**2)
+console.log(squareNumbers)
 /*
   04
 
@@ -43,12 +52,16 @@ const cart = [
   { name: 'Death Stranding', price: 149.99 }
 ]
 
+const gameList = cart.reduce((acc, obj) =>{
+  acc += ` -${obj.name}\n`
+  return acc
+},'')
 /*
   - Nome 1
   - Nome 2
   - Nome 3
 */
-
+console.log(gameList)
 /*
   05
 
@@ -70,6 +83,8 @@ const tarantinoMovies = [
   { name: 'Kill Bill: Volume 1', release: 2003 }
 ]
 
+const moviesBefore2000 = tarantinoMovies.filter(movie => movie.release < 2000)
+console.log(moviesBefore2000)
 /*
   06
 
@@ -86,6 +101,8 @@ const tvShows = [
   { name: 'House M.D.', releaseYear: 2004 },
   { name: 'Watchmen', releaseYear: 2019 }
 ]
+const tvShowsNames = tvShows.map(tvShows => tvShows.name)
+console.log(tvShowsNames)
 
 /*
   07
@@ -93,3 +110,4 @@ const tvShows = [
   - Observe os loops da sua versão do quiz e considere se, baseado no que foi  
     visto nessa aula, você deve refatorá-los.
 */
+
