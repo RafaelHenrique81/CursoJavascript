@@ -7,6 +7,7 @@
 */
 
 const names = ['Caio', 'André', 'Dário']
+console.log((names.map(item => item)).sort(), names)
 
 /*
   02
@@ -22,6 +23,8 @@ const characters = [
   { id: 01, name: 'Scar' },
   { id: 04, name: 'Mufasa' }
 ]
+const ordenedById = (characters.map(item => ({id: item.id , name: item.name})))
+console.log(ordenedById.sort((a, b) => a.id - b.id))
 
 /*
   03
@@ -32,6 +35,7 @@ const characters = [
 */
 
 const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
+console.log(numbers, (numbers.map(number => number)).sort((a, b) => a - b))
 
 /*
   04
@@ -40,6 +44,18 @@ const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
 */
 
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
+for(let i =0 ; i < randomNumbers.length ; i++){
+  if (randomNumbers[i] > 50){
+  console.log(randomNumbers[i])
+  break
+  }
+}
+
+/*
+      forma correta de resolução::
+  console.log(randomNumbers.find(number => number > 50)  )  
+
+*/
 
 /*
   05
@@ -50,6 +66,8 @@ const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
 */
 
 const people = ['Cauã', 'Alfredo', 'Bruno']
+const invertedPeople = ((people.map(item => item).sort()).reverse())
+console.log(invertedPeople)
 
 /*
   06
